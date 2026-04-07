@@ -16,16 +16,16 @@ pipeline {
         }
 
         stage('Report') {
-            steps {
-                publishHTML(target: [
-                    reportDir: 'target',
-                    reportFiles: 'ExtentReport.html',
-                    reportName: 'Extent Report',
-                    keepAll: true,
-                    alwaysLinkToLastBuild: true
-                ])
-            }
-        }
+    steps {
+        publishHTML(target: [
+            reportDir: 'target',
+            reportFiles: 'ExtentReport.html',
+            reportName: 'Extent Report',
+            keepAll: true,
+            alwaysLinkToLastBuild: true
+        ])
+    }
+}
 
     }
 }
