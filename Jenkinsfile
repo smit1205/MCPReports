@@ -5,21 +5,21 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh '$HOME/maven/bin/mvn clean compile'
+                sh '"/Users/mac air/maven/bin/mvn" clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                sh '$HOME/maven/bin/mvn test'
+                sh '"/Users/mac air/maven/bin/mvn" test'
             }
         }
 
         stage('Report') {
             steps {
                 publishHTML(target: [
-                    reportDir: 'reports',
-                    reportFiles: 'extent-report.html',
+                    reportDir: 'target',
+                    reportFiles: 'ExtentReport.html',
                     reportName: 'Extent Report',
                     keepAll: true,
                     alwaysLinkToLastBuild: true
