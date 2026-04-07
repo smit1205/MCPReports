@@ -1,26 +1,28 @@
 pipeline {
     agent any
 
-    stages { 
+    stages {
 
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                sh '$HOME/maven/bin/mvn clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh '$HOME/maven/bin/mvn test'
             }
         }
 
         stage('Report') {
             steps {
-                publishHTML([
+                publishHTML(target: [
                     reportDir: 'reports',
                     reportFiles: 'extent-report.html',
-                    reportName: 'Test Report'
+                    reportName: 'Extent Report',
+                    keepAll: true,
+                    alwaysLinkToLastBuild: true
                 ])
             }
         }
